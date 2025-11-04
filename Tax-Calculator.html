@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Date Formula Helper</title>
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    margin: 40px;
+    background: #f4f6f8;
+    color: #222;
+  }
+  h1, h2 { color: #003366; }
+  label { display: block; margin-top: 20px; font-weight: bold; }
+  input[type=text] {
+    padding: 8px;
+    width: 280px;
+    font-size: 14px;
+    margin-top: 5px;
+  }
+  .formula-box {
+    background: #fff;
+    border: 1px solid #ccc;
+    padding: 10px;
+    margin-top: 10px;
+    white-space: pre-wrap;
+    font-family: Consolas, monospace;
+    font-size: 14px;
+    border-radius: 4px;
+  }
+  button {
+    margin-top: 15px;
+    padding: 10px 15px;
+    background: #003366;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    border-radius: 4px;
+  }
+  button:hover { background: #0055aa; }
+</style>
+</head>
+<body>
+
+<h1>Excel / Google Sheets Formula Generator</h1>
+<p>Enter your Buy and Sell Date column ranges below (e.g. <code>C5:C824</code> and <code>D5:D824</code>).</p>
+
+<label for="buyRange">Buy Date Range (Column Range):</label>
+<input type="text" id="buyRange" placeholder="e.g. C5:C824">
+
+<label for="sellRange">Sell Date Range (Column Range):</label>
+<input type="text" id="sellRange" placeholder="e.g. D5:D824">
+
+<button id="generateBtn">Generate Formulas</button>
+
+<div id="output" style="margin-top:30px;"></div>
+
+<script>
+  document.getElementById("generateBtn").addEventListener("click", function() {
+    const buy = document.getElementById("buyRange").value || "C5:C824";
+    const sell = document.getElementById("sellRange").value || "D5:D824";
+
+    const outputHTML = `
+      <h2>🧾 1. Convert Dates to Value</h2>
+      <div class="formula-box">=MAP(${buy}, LAMBDA(d, VALUE(d)))</div>
+      <div class="formula-box">=MAP(${sell}, LAMBDA(d, VALUE(d)))</div>
+
+      <h2>📅 2. Quarter (Q1–Q5) Formula</h2>
+      <div class="formula-box">=BYROW(${sell}, LAMBDA(d,
+        IFS(
+          AND(MONTH(d)=4, DAY(d)>=1), "Q1",
+          MONTH(d)=5, "Q1",
+          AND(MONTH(d)=6, DAY(d)<=15), "Q1",
+          AND(MONTH(d)=6, DAY(d)>=16), "Q2",
+          OR(MONTH(d)=7, MONTH(d)=8), "Q2",
+          AND(MONTH(d)=9, DAY(d)<=15), "Q2",
+          AND(MONTH(d)=9, DAY(d)>=16), "Q3",
+          OR(MONTH(d)=10, MONTH(d)=11), "Q3",
+          AND(MONTH(d)=12, DAY(d)<=15), "Q3",
+          AND(MONTH(d)=12, DAY(d)>=16), "Q4",
+          OR(MONTH(d)=1, MONTH(d)=2), "Q4",
+          AND(MONTH(d)=3, DAY(d)<=15), "Q4",
+          AND(MONTH(d)=3, DAY(d)>=16), "Q5"
+        )
+      ))</div>
+
+      <h2>💰 3. Holding Type Formula</h2>
+      <div class="formula-box">=MAP(${buy}, ${sell}, LAMBDA(buy, sell,
+        IF(INT(buy)=INT(sell), "Intraday",
+          IF((YEAR(sell)-YEAR(buy))>1, "Long Term",
+            IF((YEAR(sell)-YEAR(buy))=1,
+              IF(sell >= DATE(YEAR(sell), MONTH(buy), DAY(buy)) - 1, "Long Term", "Short Term"),
+              "Short Term"
+            )
+          )
+        )
+      ))</div>
+
+      <h2>🧮 4. Pre-July / Post Formula</h2>
+      <div class="formula-box">=BYROW(${sell}, LAMBDA(d,
+        IFS(
+          AND(MONTH(d)=7, DAY(d)>=23), "POST",
+          OR(MONTH(d)=8, MONTH(d)=9, MONTH(d)=10, MONTH(d)=11, MONTH(d)=12, MONTH(d)=1, MONTH(d)=2, MONTH(d)=3), "POST",
+          OR(MONTH(d)=4, MONTH(d)=5, MONTH(d)=6), "PRE-JULY",
+          AND(MONTH(d)=7, DAY(d)<=23), "PRE-JULY"
+        )
+      ))</div>
+
+      <h2>🧩 5. Notes</h2>
+      <ul>
+        <li>Ensure your Buy and Sell columns are formatted as <b>DATE</b>.</li>
+        <li>Paste the formulas in an <b>empty column</b> (e.g. K2:K1000).</li>
+        <li>Works for Excel and Google Sheets (dynamic array functions).</li>
+      </ul>
+    `;
+
+    document.getElementById("output").innerHTML = outputHTML;
+  });
+</script>
+
+</body>
+</html>
