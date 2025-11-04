@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Web Links Navigation</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            margin: 0;
+            padding: 20px;
+            min-height: 100vh;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+        }
+        
+        h1 {
+            text-align: center;
+            color: #333;
+            margin-bottom: 30px;
+            font-size: 2.5em;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+        
+        th {
+            background: linear-gradient(135deg, #ff6b6b, #ee5a24);
+            color: white;
+            padding: 15px;
+            text-align: center;
+            font-size: 1.2em;
+            font-weight: bold;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+        }
+        
+        td {
+            padding: 15px;
+            text-align: center;
+            border-bottom: 1px solid #eee;
+            transition: background-color 0.3s ease;
+        }
+        
+        tr:nth-child(even) {
+            background-color: #f8f9fa;
+        }
+        
+        tr:hover {
+            background-color: #e3f2fd;
+            transform: scale(1.01);
+            transition: all 0.3s ease;
+        }
+        
+        .link-button {
+            display: inline-block;
+            padding: 12px 25px;
+            text-decoration: none;
+            color: white;
+            border-radius: 25px;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .link-button:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: left 0.5s;
+        }
+        
+        .link-button:hover:before {
+            left: 100%;
+        }
+        
+        .link-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+        }
+        
+        /* Different colors for each link */
+        .color-1 { background: linear-gradient(135deg, #ff6b6b, #ee5a24); }
+        .color-2 { background: linear-gradient(135deg, #4ecdc4, #44a08d); }
+        .color-3 { background: linear-gradient(135deg, #45b7d1, #96c93d); }
+        .color-4 { background: linear-gradient(135deg, #f093fb, #f5576c); }
+        .color-5 { background: linear-gradient(135deg, #4facfe, #00f2fe); }
+        .color-6 { background: linear-gradient(135deg, #fa709a, #fee140); }
+        .color-7 { background: linear-gradient(135deg, #a8edea, #fed6e3); }
+        .color-8 { background: linear-gradient(135deg, #ff9a9e, #fecfef); }
+        .color-9 { background: linear-gradient(135deg, #667eea, #764ba2); }
+        .color-10 { background: linear-gradient(135deg, #f6d365, #fda085); }
+        .color-11 { background: linear-gradient(135deg, #96fbc4, #f9f047); }
+        .color-12 { background: linear-gradient(135deg, #ff9a56, #ffad56); }
+        .color-13 { background: linear-gradient(135deg, #a8e6cf, #dcedc1); }
+        .color-14 { background: linear-gradient(135deg, #ffecd2, #fcb69f); }
+        .color-15 { background: linear-gradient(135deg, #ff8a80, #ea80fc); }
+        .color-16 { background: linear-gradient(135deg, #8fd3f4, #84fab0); }
+        .color-17 { background: linear-gradient(135deg, #cfd9df, #e2ebf0); }
+        .color-18 { background: linear-gradient(135deg, #ffeaa7, #fab1a0); }
+        .color-19 { background: linear-gradient(135deg, #74b9ff, #0984e3); }
+        .color-20 { background: linear-gradient(135deg, #fd79a8, #fdcb6e); }
+        
+        .link-number {
+            font-size: 1.1em;
+            font-weight: bold;
+            color: #333;
+        }
+        
+        @media (max-width: 768px) {
+            .container {
+                padding: 15px;
+            }
+            
+            h1 {
+                font-size: 2em;
+            }
+            
+            th, td {
+                padding: 10px;
+            }
+            
+            .link-button {
+                padding: 10px 20px;
+                font-size: 0.9em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🌐 Web Navigation Links</h1>
+        <table>
+            <thead>
+                <tr>
+                    <th>Link Number</th>
+                    <th>Navigation Link</th>
+                    <th>Description</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td class="link-number">1</td>
+                    <td><a href="index.html" class="link-button color-1">ClickHere_1</a></td>
+                    <td>Navigate to Home Page</td>
+                </tr>
+                <tr>
+                    <td class="link-number">2</td>
+                    <td><a href="index.html" class="link-button color-2">ClickHere_2</a></td>
+                    <td>Navigate to Home Page</td>
+                </tr>
+                <tr>
+                    <td class="link-number">3</td>
+                    <td><a href="index.html" class="link-button color-3">ClickHere_3</a></td>
+                    <td>Navigate to Home Page</td>
+                </tr>
+                <tr>
+                    <td class="link-number">4</td>
+                    <td><a href="index.html" class="link-button color-4">ClickHere_4</a></td>
+                    <td>Navigate to Home Page</td>
+                </tr>
+                <tr>
+                    <td class="link-number">5</td>
+                    <td><a href="index.html" class="link-button color-5">ClickHere_5</a></td>
+                    <td>Navigate to Home Page</td>
+                </tr>
+                <tr>
+                    <td class="link-number">6</td>
+                    <td><a href="index.html" class="link-button color-6">ClickHere_6</a></td>
+                    <td>Navigate to Home Page</td>
+                </tr>
+                <tr>
+                    <td class="link-number">7</td>
+                    <td><a href="index.html" class="link-button color-7">ClickHere_7</a></td>
+                    <td>Navigate to Home Page</td>
+                </tr>
+                <tr>
+                    <td class="link-number">8</td>
+                    <td><a href="index.html" class="link-button color-8">ClickHere_8</a></td>
+                    <td>Navigate to Home Page</td>
+                </tr>
+                <tr>
+                    <td class="link-number">9</td>
+                    <td><a href="index.html" class="link-button color-9">ClickHere_9</a></td>
+                    <td>Navigate to Home Page</td>
+                </tr>
+                <tr>
+                    <td class="link-number">10</td>
+                    <td><a href="index.html" class="link-button color-10">ClickHere_10</a></td>
+                    <td>Navigate to Home Page</td>
+                </tr>
+                <tr>
+                    <td class="link-number">11</td>
+                    <td><a href="index.html" class="link-button color-11">ClickHere_11</a></td>
+                    <td>Navigate to Home Page</td>
+                </tr>
+                <tr>
+                    <td class="link-number">12</td>
+                    <td><a href="index.html" class="link-button color-12">ClickHere_12</a></td>
+                    <td>Navigate to Home Page</td>
+                </tr>
+                <tr>
+                    <td class="link-number">13</td>
+                    <td><a href="index.html" class="link-button color-13">ClickHere_13</a></td>
+                    <td>Navigate to Home Page</td>
+                </tr>
+                <tr>
+                    <td class="link-number">14</td>
+                    <td><a href="index.html" class="link-button color-14">ClickHere_14</a></td>
+                    <td>Navigate to Home Page</td>
+                </tr>
+                <tr>
+                    <td class="link-number">15</td>
+                    <td><a href="index.html" class="link-button color-15">ClickHere_15</a></td>
+                    <td>Navigate to Home Page</td>
+                </tr>
+                <tr>
+                    <td class="link-number">16</td>
+                    <td><a href="index.html" class="link-button color-16">ClickHere_16</a></td>
+                    <td>Navigate to Home Page</td>
+                </tr>
+                <tr>
+                    <td class="link-number">17</td>
+                    <td><a href="index.html" class="link-button color-17">ClickHere_17</a></td>
+                    <td>Navigate to Home Page</td>
+                </tr>
+                <tr>
+                    <td class="link-number">18</td>
+                    <td><a href="index.html" class="link-button color-18">ClickHere_18</a></td>
+                    <td>Navigate to Home Page</td>
+                </tr>
+                <tr>
+                    <td class="link-number">19</td>
+                    <td><a href="index.html" class="link-button color-19">ClickHere_19</a></td>
+                    <td>Navigate to Home Page</td>
+                </tr>
+                <tr>
+                    <td class="link-number">20</td>
+                    <td><a href="index.html" class="link-button color-20">ClickHere_20</a></td>
+                    <td>Navigate to Home Page</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>
