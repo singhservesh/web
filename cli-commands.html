@@ -1,0 +1,511 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CLI Command Blocks</title>
+    <style>
+        :root {
+            --page-bg: linear-gradient(160deg, #0f172a 0%, #1d4ed8 45%, #93c5fd 100%);
+            --panel-bg: rgba(248, 250, 252, 0.95);
+            --card-bg: #ffffff;
+            --text-main: #0f172a;
+            --text-muted: #475569;
+            --accent: #ea580c;
+            --accent-strong: #c2410c;
+            --border: rgba(148, 163, 184, 0.35);
+            --shadow: 0 18px 45px rgba(15, 23, 42, 0.18);
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            min-height: 100vh;
+            padding: 24px;
+            font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+            background: var(--page-bg);
+            color: var(--text-main);
+        }
+
+        .shell {
+            max-width: 1400px;
+            margin: 0 auto;
+            background: var(--panel-bg);
+            border-radius: 24px;
+            padding: 32px;
+            box-shadow: var(--shadow);
+            backdrop-filter: blur(8px);
+        }
+
+        .header {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            gap: 16px;
+            align-items: center;
+            margin-bottom: 28px;
+        }
+
+        .title-group h1 {
+            margin: 0 0 8px;
+            font-size: clamp(2rem, 4vw, 3rem);
+        }
+
+        .title-group p {
+            margin: 0;
+            color: var(--text-muted);
+            font-size: 1rem;
+        }
+
+        .nav-link {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 12px 20px;
+            border-radius: 999px;
+            text-decoration: none;
+            font-weight: 700;
+            color: #fff;
+            background: linear-gradient(135deg, var(--accent), #fb923c);
+            box-shadow: 0 12px 24px rgba(234, 88, 12, 0.25);
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
+            gap: 18px;
+        }
+
+        .command-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 18px;
+            padding: 18px;
+            box-shadow: 0 14px 30px rgba(15, 23, 42, 0.08);
+        }
+
+        .card-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 14px;
+        }
+
+        .card-top h2 {
+            margin: 0;
+            font-size: 1.05rem;
+        }
+
+        .copy-button {
+            border: 0;
+            border-radius: 12px;
+            padding: 10px 14px;
+            font-size: 0.9rem;
+            font-weight: 700;
+            color: #fff;
+            background: linear-gradient(135deg, #2563eb, #0f766e);
+            cursor: pointer;
+        }
+
+        .copy-button:hover {
+            background: linear-gradient(135deg, #1d4ed8, #115e59);
+        }
+
+        pre {
+            margin: 0;
+            padding: 16px;
+            border-radius: 14px;
+            background: #0f172a;
+            color: #e2e8f0;
+            font-family: Consolas, "Courier New", monospace;
+            font-size: 0.88rem;
+            line-height: 1.55;
+            overflow-x: auto;
+            white-space: pre-wrap;
+            word-break: break-word;
+        }
+
+        @media (max-width: 768px) {
+            body {
+                padding: 16px;
+            }
+
+            .shell {
+                padding: 20px;
+            }
+
+            .card-top {
+                align-items: flex-start;
+                flex-direction: column;
+            }
+
+            .copy-button {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="shell">
+        <div class="header">
+            <div class="title-group">
+                <h1>CLI Command Blocks</h1>
+                <p>Each card contains 10 lines and can be copied in one click.</p>
+            </div>
+            <a class="nav-link" href="web.html">Back to Navigation</a>
+        </div>
+
+        <div class="grid">
+            <section class="command-card">
+                <div class="card-top">
+                    <h2>Block 1</h2>
+                    <button class="copy-button" type="button" data-target="commands-1">Copy Block</button>
+                </div>
+                <pre id="commands-1">shell dbiClient -s  /dbi/OlsAgt-1-5 -c foe.slot delete 1-1
+shell dbiClient -s  /dbi/OlsAgt-1-5 -c foe.slot delete 1-2
+shell dbiClient -s  /dbi/OlsAgt-1-5 -c foe.slot delete 1
+shell dbiClient -s  /dbi/OlsAgt-1-5 -c foe.dump
+shell dbiClient -s  /dbi/OlsAgt-1-5 -c foe.status
+shell dbiClient -s  /dbi/OlsAgt-1-5 -c foe.slot delete 1-1
+shell dbiClient -s  /dbi/OlsAgt-1-5 -c foe.slot delete 1-2
+shell dbiClient -s  /dbi/OlsAgt-1-5 -c foe.slot delete 1
+shell dbiClient -s  /dbi/OlsAgt-1-5 -c foe.dump
+shell dbiClient -s  /dbi/OlsAgt-1-5 -c foe.status</pre>
+            </section>
+            <section class="command-card">
+                <div class="card-top">
+                    <h2>Block 2</h2>
+                    <button class="copy-button" type="button" data-target="commands-2">Copy Block</button>
+                </div>
+                <pre id="commands-2">shell dbiClient -s  /dbi/OlsAgt-1-5 -c foe.slot delete 1-1
+shell dbiClient -s  /dbi/OlsAgt-1-5 -c foe.slot delete 1-2
+shell dbiClient -s  /dbi/OlsAgt-1-5 -c foe.slot delete 1
+shell dbiClient -s  /dbi/OlsAgt-1-5 -c foe.dump
+shell dbiClient -s  /dbi/OlsAgt-1-5 -c foe.status
+shell dbiClient -s  /dbi/OlsAgt-1-5 -c foe.slot delete 1-1
+shell dbiClient -s  /dbi/OlsAgt-1-5 -c foe.slot delete 1-2
+shell dbiClient -s  /dbi/OlsAgt-1-5 -c foe.slot delete 1
+shell dbiClient -s  /dbi/OlsAgt-1-5 -c foe.dump
+shell dbiClient -s  /dbi/OlsAgt-1-5 -c foe.status</pre>
+            </section>
+            <section class="command-card">
+                <div class="card-top">
+                    <h2>Block 3</h2>
+                    <button class="copy-button" type="button" data-target="commands-3">Copy Block</button>
+                </div>
+                <pre id="commands-3">shell dbiClient -s  /dbi/OlsAgt-1-5 -c foe.slot delete 1-1
+shell dbiClient -s  /dbi/OlsAgt-1-5 -c foe.slot delete 1-2
+shell dbiClient -s  /dbi/OlsAgt-1-5 -c foe.slot delete 1
+shell dbiClient -s  /dbi/OlsAgt-1-5 -c foe.dump
+shell dbiClient -s  /dbi/OlsAgt-1-5 -c foe.status
+shell dbiClient -s  /dbi/OlsAgt-1-5 -c foe.slot delete 1-1
+shell dbiClient -s  /dbi/OlsAgt-1-5 -c foe.slot delete 1-2
+shell dbiClient -s  /dbi/OlsAgt-1-5 -c foe.slot delete 1
+shell dbiClient -s  /dbi/OlsAgt-1-5 -c foe.dump
+shell dbiClient -s  /dbi/OlsAgt-1-5 -c foe.status</pre>
+            </section>
+            <section class="command-card">
+                <div class="card-top">
+                    <h2>Block 4</h2>
+                    <button class="copy-button" type="button" data-target="commands-4">Copy Block</button>
+                </div>
+                <pre id="commands-4">shell dbiClient -s  /dbi/OlsAgt-1-5 -c foe.slot delete 1-1
+shell dbiClient -s  /dbi/OlsAgt-1-5 -c foe.slot delete 1-2
+shell dbiClient -s  /dbi/OlsAgt-1-5 -c foe.slot delete 1
+shell dbiClient -s  /dbi/OlsAgt-1-5 -c foe.dump
+shell dbiClient -s  /dbi/OlsAgt-1-5 -c foe.status
+shell dbiClient -s  /dbi/OlsAgt-1-5 -c foe.slot delete 1-1
+shell dbiClient -s  /dbi/OlsAgt-1-5 -c foe.slot delete 1-2
+shell dbiClient -s  /dbi/OlsAgt-1-5 -c foe.slot delete 1
+shell dbiClient -s  /dbi/OlsAgt-1-5 -c foe.dump
+shell dbiClient -s  /dbi/OlsAgt-1-5 -c foe.status</pre>
+            </section>
+            <section class="command-card">
+                <div class="card-top">
+                    <h2>Block 5</h2>
+                    <button class="copy-button" type="button" data-target="commands-5">Copy Block</button>
+                </div>
+                <pre id="commands-5">shell dbiClient -s  /dbi/OlsAgt-1-5 -c foe.slot delete 1-1
+shell dbiClient -s  /dbi/OlsAgt-1-5 -c foe.slot delete 1-2
+shell dbiClient -s  /dbi/OlsAgt-1-5 -c foe.slot delete 1
+shell dbiClient -s  /dbi/OlsAgt-1-5 -c foe.dump
+shell dbiClient -s  /dbi/OlsAgt-1-5 -c foe.status
+shell dbiClient -s  /dbi/OlsAgt-1-5 -c foe.slot delete 1-1
+shell dbiClient -s  /dbi/OlsAgt-1-5 -c foe.slot delete 1-2
+shell dbiClient -s  /dbi/OlsAgt-1-5 -c foe.slot delete 1
+shell dbiClient -s  /dbi/OlsAgt-1-5 -c foe.dump
+shell dbiClient -s  /dbi/OlsAgt-1-5 -c foe.status</pre>
+            </section>
+            <section class="command-card">
+                <div class="card-top">
+                    <h2>Block 6</h2>
+                    <button class="copy-button" type="button" data-target="commands-6">Copy Block</button>
+                </div>
+                <pre id="commands-6">shell dbiClient -s  /dbi/OlsAgt-1-5 -c foe.slot delete 1-1
+shell dbiClient -s  /dbi/OlsAgt-1-5 -c foe.slot delete 1-2
+shell dbiClient -s  /dbi/OlsAgt-1-5 -c foe.slot delete 1
+shell dbiClient -s  /dbi/OlsAgt-1-5 -c foe.dump
+shell dbiClient -s  /dbi/OlsAgt-1-5 -c foe.status
+shell dbiClient -s  /dbi/OlsAgt-1-5 -c foe.slot delete 1-1
+shell dbiClient -s  /dbi/OlsAgt-1-5 -c foe.slot delete 1-2
+shell dbiClient -s  /dbi/OlsAgt-1-5 -c foe.slot delete 1
+shell dbiClient -s  /dbi/OlsAgt-1-5 -c foe.dump
+shell dbiClient -s  /dbi/OlsAgt-1-5 -c foe.status</pre>
+            </section>
+            <section class="command-card">
+                <div class="card-top">
+                    <h2>Block 7</h2>
+                    <button class="copy-button" type="button" data-target="commands-7">Copy Block</button>
+                </div>
+                <pre id="commands-7">shell dbiClient -s  /dbi/OlsAgt-1-5 -c foe.slot delete 1-1
+shell dbiClient -s  /dbi/OlsAgt-1-5 -c foe.slot delete 1-2
+shell dbiClient -s  /dbi/OlsAgt-1-5 -c foe.slot delete 1
+shell dbiClient -s  /dbi/OlsAgt-1-5 -c foe.dump
+shell dbiClient -s  /dbi/OlsAgt-1-5 -c foe.status
+shell dbiClient -s  /dbi/OlsAgt-1-5 -c foe.slot delete 1-1
+shell dbiClient -s  /dbi/OlsAgt-1-5 -c foe.slot delete 1-2
+shell dbiClient -s  /dbi/OlsAgt-1-5 -c foe.slot delete 1
+shell dbiClient -s  /dbi/OlsAgt-1-5 -c foe.dump
+shell dbiClient -s  /dbi/OlsAgt-1-5 -c foe.status</pre>
+            </section>
+            <section class="command-card">
+                <div class="card-top">
+                    <h2>Block 8</h2>
+                    <button class="copy-button" type="button" data-target="commands-8">Copy Block</button>
+                </div>
+                <pre id="commands-8">shell dbiClient -s  /dbi/OlsAgt-1-5 -c foe.slot delete 1-1
+shell dbiClient -s  /dbi/OlsAgt-1-5 -c foe.slot delete 1-2
+shell dbiClient -s  /dbi/OlsAgt-1-5 -c foe.slot delete 1
+shell dbiClient -s  /dbi/OlsAgt-1-5 -c foe.dump
+shell dbiClient -s  /dbi/OlsAgt-1-5 -c foe.status
+shell dbiClient -s  /dbi/OlsAgt-1-5 -c foe.slot delete 1-1
+shell dbiClient -s  /dbi/OlsAgt-1-5 -c foe.slot delete 1-2
+shell dbiClient -s  /dbi/OlsAgt-1-5 -c foe.slot delete 1
+shell dbiClient -s  /dbi/OlsAgt-1-5 -c foe.dump
+shell dbiClient -s  /dbi/OlsAgt-1-5 -c foe.status</pre>
+            </section>
+            <section class="command-card">
+                <div class="card-top">
+                    <h2>Block 9</h2>
+                    <button class="copy-button" type="button" data-target="commands-9">Copy Block</button>
+                </div>
+                <pre id="commands-9">shell dbiClient -s  /dbi/OlsAgt-1-5 -c foe.slot delete 1-1
+shell dbiClient -s  /dbi/OlsAgt-1-5 -c foe.slot delete 1-2
+shell dbiClient -s  /dbi/OlsAgt-1-5 -c foe.slot delete 1
+shell dbiClient -s  /dbi/OlsAgt-1-5 -c foe.dump
+shell dbiClient -s  /dbi/OlsAgt-1-5 -c foe.status
+shell dbiClient -s  /dbi/OlsAgt-1-5 -c foe.slot delete 1-1
+shell dbiClient -s  /dbi/OlsAgt-1-5 -c foe.slot delete 1-2
+shell dbiClient -s  /dbi/OlsAgt-1-5 -c foe.slot delete 1
+shell dbiClient -s  /dbi/OlsAgt-1-5 -c foe.dump
+shell dbiClient -s  /dbi/OlsAgt-1-5 -c foe.status</pre>
+            </section>
+            <section class="command-card">
+                <div class="card-top">
+                    <h2>Block 10</h2>
+                    <button class="copy-button" type="button" data-target="commands-10">Copy Block</button>
+                </div>
+                <pre id="commands-10">shell dbiClient -s  /dbi/OlsAgt-1-5 -c foe.slot delete 1-1
+shell dbiClient -s  /dbi/OlsAgt-1-5 -c foe.slot delete 1-2
+shell dbiClient -s  /dbi/OlsAgt-1-5 -c foe.slot delete 1
+shell dbiClient -s  /dbi/OlsAgt-1-5 -c foe.dump
+shell dbiClient -s  /dbi/OlsAgt-1-5 -c foe.status
+shell dbiClient -s  /dbi/OlsAgt-1-5 -c foe.slot delete 1-1
+shell dbiClient -s  /dbi/OlsAgt-1-5 -c foe.slot delete 1-2
+shell dbiClient -s  /dbi/OlsAgt-1-5 -c foe.slot delete 1
+shell dbiClient -s  /dbi/OlsAgt-1-5 -c foe.dump
+shell dbiClient -s  /dbi/OlsAgt-1-5 -c foe.status</pre>
+            </section>
+            <section class="command-card">
+                <div class="card-top">
+                    <h2>Block 11</h2>
+                    <button class="copy-button" type="button" data-target="commands-11">Copy Block</button>
+                </div>
+                <pre id="commands-11">shell dbiClient -s  /dbi/OlsAgt-1-5 -c foe.slot delete 1-1
+shell dbiClient -s  /dbi/OlsAgt-1-5 -c foe.slot delete 1-2
+shell dbiClient -s  /dbi/OlsAgt-1-5 -c foe.slot delete 1
+shell dbiClient -s  /dbi/OlsAgt-1-5 -c foe.dump
+shell dbiClient -s  /dbi/OlsAgt-1-5 -c foe.status
+shell dbiClient -s  /dbi/OlsAgt-1-5 -c foe.slot delete 1-1
+shell dbiClient -s  /dbi/OlsAgt-1-5 -c foe.slot delete 1-2
+shell dbiClient -s  /dbi/OlsAgt-1-5 -c foe.slot delete 1
+shell dbiClient -s  /dbi/OlsAgt-1-5 -c foe.dump
+shell dbiClient -s  /dbi/OlsAgt-1-5 -c foe.status</pre>
+            </section>
+            <section class="command-card">
+                <div class="card-top">
+                    <h2>Block 12</h2>
+                    <button class="copy-button" type="button" data-target="commands-12">Copy Block</button>
+                </div>
+                <pre id="commands-12">shell dbiClient -s  /dbi/OlsAgt-1-5 -c foe.slot delete 1-1
+shell dbiClient -s  /dbi/OlsAgt-1-5 -c foe.slot delete 1-2
+shell dbiClient -s  /dbi/OlsAgt-1-5 -c foe.slot delete 1
+shell dbiClient -s  /dbi/OlsAgt-1-5 -c foe.dump
+shell dbiClient -s  /dbi/OlsAgt-1-5 -c foe.status
+shell dbiClient -s  /dbi/OlsAgt-1-5 -c foe.slot delete 1-1
+shell dbiClient -s  /dbi/OlsAgt-1-5 -c foe.slot delete 1-2
+shell dbiClient -s  /dbi/OlsAgt-1-5 -c foe.slot delete 1
+shell dbiClient -s  /dbi/OlsAgt-1-5 -c foe.dump
+shell dbiClient -s  /dbi/OlsAgt-1-5 -c foe.status</pre>
+            </section>
+            <section class="command-card">
+                <div class="card-top">
+                    <h2>Block 13</h2>
+                    <button class="copy-button" type="button" data-target="commands-13">Copy Block</button>
+                </div>
+                <pre id="commands-13">shell dbiClient -s  /dbi/OlsAgt-1-5 -c foe.slot delete 1-1
+shell dbiClient -s  /dbi/OlsAgt-1-5 -c foe.slot delete 1-2
+shell dbiClient -s  /dbi/OlsAgt-1-5 -c foe.slot delete 1
+shell dbiClient -s  /dbi/OlsAgt-1-5 -c foe.dump
+shell dbiClient -s  /dbi/OlsAgt-1-5 -c foe.status
+shell dbiClient -s  /dbi/OlsAgt-1-5 -c foe.slot delete 1-1
+shell dbiClient -s  /dbi/OlsAgt-1-5 -c foe.slot delete 1-2
+shell dbiClient -s  /dbi/OlsAgt-1-5 -c foe.slot delete 1
+shell dbiClient -s  /dbi/OlsAgt-1-5 -c foe.dump
+shell dbiClient -s  /dbi/OlsAgt-1-5 -c foe.status</pre>
+            </section>
+            <section class="command-card">
+                <div class="card-top">
+                    <h2>Block 14</h2>
+                    <button class="copy-button" type="button" data-target="commands-14">Copy Block</button>
+                </div>
+                <pre id="commands-14">shell dbiClient -s  /dbi/OlsAgt-1-5 -c foe.slot delete 1-1
+shell dbiClient -s  /dbi/OlsAgt-1-5 -c foe.slot delete 1-2
+shell dbiClient -s  /dbi/OlsAgt-1-5 -c foe.slot delete 1
+shell dbiClient -s  /dbi/OlsAgt-1-5 -c foe.dump
+shell dbiClient -s  /dbi/OlsAgt-1-5 -c foe.status
+shell dbiClient -s  /dbi/OlsAgt-1-5 -c foe.slot delete 1-1
+shell dbiClient -s  /dbi/OlsAgt-1-5 -c foe.slot delete 1-2
+shell dbiClient -s  /dbi/OlsAgt-1-5 -c foe.slot delete 1
+shell dbiClient -s  /dbi/OlsAgt-1-5 -c foe.dump
+shell dbiClient -s  /dbi/OlsAgt-1-5 -c foe.status</pre>
+            </section>
+            <section class="command-card">
+                <div class="card-top">
+                    <h2>Block 15</h2>
+                    <button class="copy-button" type="button" data-target="commands-15">Copy Block</button>
+                </div>
+                <pre id="commands-15">shell dbiClient -s  /dbi/OlsAgt-1-5 -c foe.slot delete 1-1
+shell dbiClient -s  /dbi/OlsAgt-1-5 -c foe.slot delete 1-2
+shell dbiClient -s  /dbi/OlsAgt-1-5 -c foe.slot delete 1
+shell dbiClient -s  /dbi/OlsAgt-1-5 -c foe.dump
+shell dbiClient -s  /dbi/OlsAgt-1-5 -c foe.status
+shell dbiClient -s  /dbi/OlsAgt-1-5 -c foe.slot delete 1-1
+shell dbiClient -s  /dbi/OlsAgt-1-5 -c foe.slot delete 1-2
+shell dbiClient -s  /dbi/OlsAgt-1-5 -c foe.slot delete 1
+shell dbiClient -s  /dbi/OlsAgt-1-5 -c foe.dump
+shell dbiClient -s  /dbi/OlsAgt-1-5 -c foe.status</pre>
+            </section>
+            <section class="command-card">
+                <div class="card-top">
+                    <h2>Block 16</h2>
+                    <button class="copy-button" type="button" data-target="commands-16">Copy Block</button>
+                </div>
+                <pre id="commands-16">shell dbiClient -s  /dbi/OlsAgt-1-5 -c foe.slot delete 1-1
+shell dbiClient -s  /dbi/OlsAgt-1-5 -c foe.slot delete 1-2
+shell dbiClient -s  /dbi/OlsAgt-1-5 -c foe.slot delete 1
+shell dbiClient -s  /dbi/OlsAgt-1-5 -c foe.dump
+shell dbiClient -s  /dbi/OlsAgt-1-5 -c foe.status
+shell dbiClient -s  /dbi/OlsAgt-1-5 -c foe.slot delete 1-1
+shell dbiClient -s  /dbi/OlsAgt-1-5 -c foe.slot delete 1-2
+shell dbiClient -s  /dbi/OlsAgt-1-5 -c foe.slot delete 1
+shell dbiClient -s  /dbi/OlsAgt-1-5 -c foe.dump
+shell dbiClient -s  /dbi/OlsAgt-1-5 -c foe.status</pre>
+            </section>
+            <section class="command-card">
+                <div class="card-top">
+                    <h2>Block 17</h2>
+                    <button class="copy-button" type="button" data-target="commands-17">Copy Block</button>
+                </div>
+                <pre id="commands-17">shell dbiClient -s  /dbi/OlsAgt-1-5 -c foe.slot delete 1-1
+shell dbiClient -s  /dbi/OlsAgt-1-5 -c foe.slot delete 1-2
+shell dbiClient -s  /dbi/OlsAgt-1-5 -c foe.slot delete 1
+shell dbiClient -s  /dbi/OlsAgt-1-5 -c foe.dump
+shell dbiClient -s  /dbi/OlsAgt-1-5 -c foe.status
+shell dbiClient -s  /dbi/OlsAgt-1-5 -c foe.slot delete 1-1
+shell dbiClient -s  /dbi/OlsAgt-1-5 -c foe.slot delete 1-2
+shell dbiClient -s  /dbi/OlsAgt-1-5 -c foe.slot delete 1
+shell dbiClient -s  /dbi/OlsAgt-1-5 -c foe.dump
+shell dbiClient -s  /dbi/OlsAgt-1-5 -c foe.status</pre>
+            </section>
+            <section class="command-card">
+                <div class="card-top">
+                    <h2>Block 18</h2>
+                    <button class="copy-button" type="button" data-target="commands-18">Copy Block</button>
+                </div>
+                <pre id="commands-18">shell dbiClient -s  /dbi/OlsAgt-1-5 -c foe.slot delete 1-1
+shell dbiClient -s  /dbi/OlsAgt-1-5 -c foe.slot delete 1-2
+shell dbiClient -s  /dbi/OlsAgt-1-5 -c foe.slot delete 1
+shell dbiClient -s  /dbi/OlsAgt-1-5 -c foe.dump
+shell dbiClient -s  /dbi/OlsAgt-1-5 -c foe.status
+shell dbiClient -s  /dbi/OlsAgt-1-5 -c foe.slot delete 1-1
+shell dbiClient -s  /dbi/OlsAgt-1-5 -c foe.slot delete 1-2
+shell dbiClient -s  /dbi/OlsAgt-1-5 -c foe.slot delete 1
+shell dbiClient -s  /dbi/OlsAgt-1-5 -c foe.dump
+shell dbiClient -s  /dbi/OlsAgt-1-5 -c foe.status</pre>
+            </section>
+            <section class="command-card">
+                <div class="card-top">
+                    <h2>Block 19</h2>
+                    <button class="copy-button" type="button" data-target="commands-19">Copy Block</button>
+                </div>
+                <pre id="commands-19">shell dbiClient -s  /dbi/OlsAgt-1-5 -c foe.slot delete 1-1
+shell dbiClient -s  /dbi/OlsAgt-1-5 -c foe.slot delete 1-2
+shell dbiClient -s  /dbi/OlsAgt-1-5 -c foe.slot delete 1
+shell dbiClient -s  /dbi/OlsAgt-1-5 -c foe.dump
+shell dbiClient -s  /dbi/OlsAgt-1-5 -c foe.status
+shell dbiClient -s  /dbi/OlsAgt-1-5 -c foe.slot delete 1-1
+shell dbiClient -s  /dbi/OlsAgt-1-5 -c foe.slot delete 1-2
+shell dbiClient -s  /dbi/OlsAgt-1-5 -c foe.slot delete 1
+shell dbiClient -s  /dbi/OlsAgt-1-5 -c foe.dump
+shell dbiClient -s  /dbi/OlsAgt-1-5 -c foe.status</pre>
+            </section>
+            <section class="command-card">
+                <div class="card-top">
+                    <h2>Block 20</h2>
+                    <button class="copy-button" type="button" data-target="commands-20">Copy Block</button>
+                </div>
+                <pre id="commands-20">shell dbiClient -s  /dbi/OlsAgt-1-5 -c foe.slot delete 1-1
+shell dbiClient -s  /dbi/OlsAgt-1-5 -c foe.slot delete 1-2
+shell dbiClient -s  /dbi/OlsAgt-1-5 -c foe.slot delete 1
+shell dbiClient -s  /dbi/OlsAgt-1-5 -c foe.dump
+shell dbiClient -s  /dbi/OlsAgt-1-5 -c foe.status
+shell dbiClient -s  /dbi/OlsAgt-1-5 -c foe.slot delete 1-1
+shell dbiClient -s  /dbi/OlsAgt-1-5 -c foe.slot delete 1-2
+shell dbiClient -s  /dbi/OlsAgt-1-5 -c foe.slot delete 1
+shell dbiClient -s  /dbi/OlsAgt-1-5 -c foe.dump
+shell dbiClient -s  /dbi/OlsAgt-1-5 -c foe.status</pre>
+            </section>
+        </div>
+    </div>
+
+    <script>
+        const copyButtons = document.querySelectorAll('.copy-button');
+
+        async function copyBlock(button) {
+            const targetId = button.getAttribute('data-target');
+            const target = document.getElementById(targetId);
+            const originalLabel = button.textContent;
+
+            try {
+                await navigator.clipboard.writeText(target.textContent);
+                button.textContent = 'Copied';
+            } catch (error) {
+                button.textContent = 'Copy failed';
+            }
+
+            window.setTimeout(() => {
+                button.textContent = originalLabel;
+            }, 1500);
+        }
+
+        copyButtons.forEach((button) => {
+            button.addEventListener('click', () => copyBlock(button));
+        });
+    </script>
+</body>
+</html>
