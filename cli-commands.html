@@ -170,35 +170,45 @@
         <div class="grid">
             <section class="command-card">
                 <div class="card-top">
-                    <h2>Block 1</h2>
+                    <h2>OxConCreate-HSC-OLS</h2>
                     <button class="copy-button" type="button" data-target="commands-1">Copy Block</button>
                 </div>
-                <pre id="commands-1">shell dbiClient -s  /dbi/OlsAgt-1-5 -c foe.slot delete 1-1
-shell dbiClient -s  /dbi/OlsAgt-1-5 -c foe.slot delete 1-2
-shell dbiClient -s  /dbi/OlsAgt-1-5 -c foe.slot delete 1
-shell dbiClient -s  /dbi/OlsAgt-1-5 -c foe.dump
-shell dbiClient -s  /dbi/OlsAgt-1-5 -c foe.status
-shell dbiClient -s  /dbi/OlsAgt-1-5 -c foe.slot delete 1-1
-shell dbiClient -s  /dbi/OlsAgt-1-5 -c foe.slot delete 1-2
-shell dbiClient -s  /dbi/OlsAgt-1-5 -c foe.slot delete 1
-shell dbiClient -s  /dbi/OlsAgt-1-5 -c foe.dump
-shell dbiClient -s  /dbi/OlsAgt-1-5 -c foe.status</pre>
+                <pre id="commands-1">
+clear recover-mode -f
+set -f cli-session-config display-timestamp true
+set -f l0-mode-op hsc-ols
+simulate plug-in-fru 1-8 RD66TM
+sleep 120 
+set -f amplifier-1-8-* amplifier-enable enabled
+set -f port-1-8-ad* external-connectivity yes
+set -f ots-1-8-dwdm-line fiber-length-tx '5.000' fiber-length-rx '5.000'
+set -f ots-1-8-dwdm-line span-loss-transmit 10
+add -m mc-1 parent-oms '1-8-dwdm-line-C' lower-frequency '192700000' upper-frequency '192900000'
+add -m mc-2 parent-oms '1-8-dwdm-line-C' lower-frequency '193100000' upper-frequency '193300000'
+
+add -m nmc-1-line parent-facility 'mc-1' center-frequency '192800000' width '200000'
+add -m nmc-2-line parent-facility 'mc-2' center-frequency '193200000' width '200000'
+
+add -m nmc-1-trib parent-facility 'oms-1-8-adc1-C' center-frequency '192800000' width '200000'  input-power-min '-1.00' input-power-max '3.00'
+add -m nmc-1-trib parent-facility 'oms-1-8-ad1' center-frequency '192800000' width '200000'  input-power-min '-1.00' input-power-max '3.00'
+add -m nmc-2-trib parent-facility 'oms-1-8-ad1' center-frequency '192800000' width '200000'  input-power-min '-1.00' input-power-max '3.00'
+add -m nmc-2-trib parent-facility 'oms-1-8-ad2' center-frequency '193200000' width '200000'  input-power-min '-1.00' input-power-max '3.00'
+
+add -f oxcon-1 source 'nmc-1-trib' destination 'nmc-1-line'
+set oxcon-1 activation-request-fwd deactivate  activation-request-bwd deactivate
+operation-control oxcon-1 controlled-delete=disabled</pre>
             </section>
             <section class="command-card">
                 <div class="card-top">
-                    <h2>Block 2</h2>
+                    <h2>OniConfig</h2>
                     <button class="copy-button" type="button" data-target="commands-2">Copy Block</button>
                 </div>
-                <pre id="commands-2">shell dbiClient -s  /dbi/OlsAgt-1-5 -c foe.slot delete 1-1
-shell dbiClient -s  /dbi/OlsAgt-1-5 -c foe.slot delete 1-2
-shell dbiClient -s  /dbi/OlsAgt-1-5 -c foe.slot delete 1
-shell dbiClient -s  /dbi/OlsAgt-1-5 -c foe.dump
-shell dbiClient -s  /dbi/OlsAgt-1-5 -c foe.status
-shell dbiClient -s  /dbi/OlsAgt-1-5 -c foe.slot delete 1-1
-shell dbiClient -s  /dbi/OlsAgt-1-5 -c foe.slot delete 1-2
-shell dbiClient -s  /dbi/OlsAgt-1-5 -c foe.slot delete 1
-shell dbiClient -s  /dbi/OlsAgt-1-5 -c foe.dump
-shell dbiClient -s  /dbi/OlsAgt-1-5 -c foe.status</pre>
+                <pre id="commands-2">onNode 2.3.4.5 onApp bsim/1-8 Command plugInSfp ZXS-SPOSC1BK-Z0 SFP_SPOSC
+onNode 2.3.4.5 onApp bsim Command modifyLoopBack 1-8 true
+onNode 2.3.4.5 onApp bsim Command setSpanLoss 1-8 15
+onNode 2.3.4.5 onApp bsim/1-8 Command setPower port-1-8-adc1 2 192800000 200000
+onNode 2.3.4.5 onApp bsim/1-8 Command setPower port-1-8-ad1 2 192800000 200000
+onNode 2.3.4.5 onApp bsim/1-8 Command setPower port-1-8-ad2 2 193200000 200000</pre>
             </section>
             <section class="command-card">
                 <div class="card-top">
@@ -474,19 +484,54 @@ shell dbiClient -s  /dbi/OlsAgt-1-5 -c foe.status</pre>
             </section>
             <section class="command-card">
                 <div class="card-top">
-                    <h2>Block 20</h2>
+                    <h2>Working with Model</h2>
                     <button class="copy-button" type="button" data-target="commands-20">Copy Block</button>
                 </div>
-                <pre id="commands-20">shell dbiClient -s  /dbi/OlsAgt-1-5 -c foe.slot delete 1-1
-shell dbiClient -s  /dbi/OlsAgt-1-5 -c foe.slot delete 1-2
-shell dbiClient -s  /dbi/OlsAgt-1-5 -c foe.slot delete 1
-shell dbiClient -s  /dbi/OlsAgt-1-5 -c foe.dump
-shell dbiClient -s  /dbi/OlsAgt-1-5 -c foe.status
-shell dbiClient -s  /dbi/OlsAgt-1-5 -c foe.slot delete 1-1
-shell dbiClient -s  /dbi/OlsAgt-1-5 -c foe.slot delete 1-2
-shell dbiClient -s  /dbi/OlsAgt-1-5 -c foe.slot delete 1
-shell dbiClient -s  /dbi/OlsAgt-1-5 -c foe.dump
-shell dbiClient -s  /dbi/OlsAgt-1-5 -c foe.status</pre>
+                <pre id="commands-20">cd /home/bld_home/ssingh/foe/chassisx-g30/build_sim_frcug3x/src/external-repos/model/yin/
+cp private/ioa-ext/rd-ext.yin   /opt/infinera/thanos/local/etc/model/yin/private/ioa-ext/rd-ext.yin
+cd /home/bld_home/ssingh/foe/chassisx-g30/src/external-repos/dsim/scripts
+./service.sh mf stop; ./service.sh mf start; pidof mf
+cat /home/ssingh/cfl_z.sh
+set -x
+cp /home/bld_home/ssingh/z/chassisx-g30/build_sim_frcug3x/src/external-repos/model/yin/private/ioa-ext/ioa-rpc-ext.yin /opt/infinera/thanos/local/etc/model/yin/private/ioa-ext/ioa-rpc-ext.yin
+cp /home/bld_home/ssingh/z/chassisx-g30/build_sim_frcug3x/src/external-repos/model/yin/public/ioa/ioa-rpc.yin /opt/infinera/thanos/local/etc/model/yin/public/ioa/
+cp /home/ssingh/dsim/chassisx-g30/build_sim_frcug3x/src/external-repos/model/yin/private/ioa-ext/rd-ext.yin /opt/infinera/thanos/local/etc/model/yin/private/ioa-ext/rd-ext.yin
+cp /home/bld_home/ssingh/z/chassisx-g30/build_sim_frcug3x/src/external-repos/model/yin/private/ioa-ext/hmo-nmc.yin /opt/infinera/thanos/local/etc/model/yin/private/ioa-ext/hmo-nmc.yin
+cd /home/bld_home/ssingh/z/chassisx-g30/src/external-repos/dsim/scripts
+./service.sh mf stop; ./service.sh mf start; pidof mf
+
+operation-control disable controlled-loopback-terminate  nmc-1-trib 
+operation-control show controlled-loopback-terminate nmc-1-trib 
+operation-control enable controlled-loopback-terminate nmc-1-trib 
+operation-control show controlled-loopback-terminate nmc-1-trib
+operation-control enable  controlled-delete oxcon-1 
+operation-control show    controlled-delete oxcon-1
+operation-control disable controlled-delete oxcon-1 
+operation-control show    controlled-delete oxcon-1
+
+
+operation-control disable controlled-loopback-terminate  oxcon-1  
+operation-control enable controlled-loopback-terminate   oxcon-1  
+operation-control show controlled-loopback-terminate     oxcon-1 
+operation-control enable  controlled-delete nmc-1-trib 
+operation-control show    controlled-delete nmc-1-trib
+operation-control disable controlled-delete nmc-1-trib 
+operation-control show controlled-delete                 nmc-1-trib
+operation-control disable controlled-loopback-terminate  nmc-1-line  
+operation-control show controlled-loopback-terminate     nmc-1-line
+operation-control enable controlled-loopback-terminate   nmc-1-line
+operation-control show controlled-loopback-terminate     nmc-1-line 
+operation-control show  nmc-1-trib 
+operation-control controlled-loopback-terminate nmc-1-trib 
+operation-control nmc-1-trib
+operation-control enable oxcon-delete controlled-delete 
+operation-control show  oxcon-1
+operation-control oxcon-delete controlled-delete oxcon-1 
+operation-control show  oxcon-1
+operation-control oxcon-delete controlled-loopback-terminate  nmc-1-trib,oxcon-1
+operation-control oxcon-delete controlled-loopback-terminate  nmc-1-trib,oxcon-1
+
+</pre>
             </section>
         </div>
     </div>
