@@ -170,33 +170,13 @@
         <div class="grid">
             <section class="command-card">
                 <div class="card-top">
-                    <h2>OxConCreate-HSC-OLS</h2>
+                    <h2>Coverity-Run</h2>
                     <button class="copy-button" type="button" data-target="commands-1">Copy Block</button>
                 </div>
                 <pre id="commands-1">
-clear recover-mode -f
-set -f cli-session-config display-timestamp true
-set -f l0-mode-op hsc-ols
-simulate plug-in-fru 1-8 RD66TM
-sleep 120 
-set -f amplifier-1-8-* amplifier-enable enabled
-set -f port-1-8-ad* external-connectivity yes
-set -f ots-1-8-dwdm-line fiber-length-tx '5.000' fiber-length-rx '5.000'
-set -f ots-1-8-dwdm-line span-loss-transmit 10
-add -m mc-1 parent-oms '1-8-dwdm-line-C' lower-frequency '192700000' upper-frequency '192900000'
-add -m mc-2 parent-oms '1-8-dwdm-line-C' lower-frequency '193100000' upper-frequency '193300000'
-
-add -m nmc-1-line parent-facility 'mc-1' center-frequency '192800000' width '200000'
-add -m nmc-2-line parent-facility 'mc-2' center-frequency '193200000' width '200000'
-
-add -m nmc-1-trib parent-facility 'oms-1-8-adc1-C' center-frequency '192800000' width '200000'  input-power-min '-1.00' input-power-max '3.00'
-add -m nmc-1-trib parent-facility 'oms-1-8-ad1' center-frequency '192800000' width '200000'  input-power-min '-1.00' input-power-max '3.00'
-add -m nmc-2-trib parent-facility 'oms-1-8-ad1' center-frequency '192800000' width '200000'  input-power-min '-1.00' input-power-max '3.00'
-add -m nmc-2-trib parent-facility 'oms-1-8-ad2' center-frequency '193200000' width '200000'  input-power-min '-1.00' input-power-max '3.00'
-
-add -f oxcon-1 source 'nmc-1-trib' destination 'nmc-1-line'
-set oxcon-1 activation-request-fwd deactivate  activation-request-bwd deactivate
-operation-control oxcon-1 controlled-delete=disabled</pre>
+cd /home/bld_home/ssingh/z/chassisx-g30/etc/
+./delta_cov_local --workspace /home/bld_home/ssingh/z/chassisx-g30/ --component l0service --target_br  master --sym-files="/home/bld_home/ssingh/z/chassisx-g30/build_sim_frcug3x/ctc_l0service.sym"
+            </pre>
             </section>
             <section class="command-card">
                 <div class="card-top">
