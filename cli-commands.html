@@ -531,6 +531,28 @@ operation-control show  oxcon-1
 operation-control oxcon-delete controlled-loopback-terminate  nmc-1-trib,oxcon-1
 operation-control oxcon-delete controlled-loopback-terminate  nmc-1-trib,oxcon-1
 
+	python3 oneStepfullstack.py --dsim_test_folder subsystem/l0service/HscOls/ --yaml_file HolsTestCases.yml --test_file Hols66SingleOxconCreateLband_rd66th.py --reuse_topo --retain_topo
+	python3 oneStepfullstack.py --dsim_test_folder subsystem/l0service/HscOls/ --yaml_file HolsTestCases.yml --test_file HolsOxconCreate_rd66tm_NETCONF.py --retain_topo 
+	
+	
+	
+	
+	rm  yin/private/ioa-ext/ioa-rpc-ext.yin
+	touch -r /home/ssingh/reference_file_timestamp ../../../../../chassisx-g30/src/external-repos/model/yang/ioa-ext/ioa-rpc-ext.yang 
+	make generateYinFromModel
+	
+	
+	
+	
+	 vim a.sh
+echo "rm  yin/private/ioa-ext/rd-ext.yin" >> /home/ssingh/yin.sh
+echo "rm  yin/public/ioa/ioa-rpc.yin" >> /home/ssingh/yin.sh
+echc "touch -r /home/ssingh/reference_file_timestamp ../../../../../chassisx-g30/src/external-repos/model/yang/ioa-ext/rd-ext.yang" >> /home/ssingh/yin.sh
+echo "touch -r /home/ssingh/reference_file_timestamp ../../../../../chassisx-g30/src/external-repos/model/yang/ioa/ioa-rpc.yang" >> /home/ssingh/yin.sh
+
+
+
+
 </pre>
             </section>
         </div>
