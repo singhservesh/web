@@ -227,16 +227,18 @@ cd /home/bld_home/ssingh/z/chassisx-g30/src/external-repos/dsim/
                     <h2>Block 4</h2>
                     <button class="copy-button" type="button" data-target="commands-4">Copy Block</button>
                 </div>
-                <pre id="commands-4">shell dbiClient -s  /dbi/OlsAgt-1-5 -c foe.slot delete 1-1
-shell dbiClient -s  /dbi/OlsAgt-1-5 -c foe.slot delete 1-2
-shell dbiClient -s  /dbi/OlsAgt-1-5 -c foe.slot delete 1
-shell dbiClient -s  /dbi/OlsAgt-1-5 -c foe.dump
-shell dbiClient -s  /dbi/OlsAgt-1-5 -c foe.status
-shell dbiClient -s  /dbi/OlsAgt-1-5 -c foe.slot delete 1-1
-shell dbiClient -s  /dbi/OlsAgt-1-5 -c foe.slot delete 1-2
-shell dbiClient -s  /dbi/OlsAgt-1-5 -c foe.slot delete 1
-shell dbiClient -s  /dbi/OlsAgt-1-5 -c foe.dump
-shell dbiClient -s  /dbi/OlsAgt-1-5 -c foe.status</pre>
+                <pre id="commands-4">download swimage source=https://iartifactory.infinera.com/artifactory/thanos/gx-r7.0.0-nightly/gx-r7.0.0-53/g3x-hw-sec-adv/G30_ADV-R7.0.0-F-2024.04.19_14_58-53.manifest
+
+cd /home/bld_home/ssingh/foe/chassisx-g30/src/external-repos/gx-integration-tests/scripts/subsystem/l0service/HscOls/
+python3 OneStepHolsSetup.py --dsim_test_folder . --yaml_file HolsTestCases.yml --test_file Hols_oxcon_force_delete.py
+ tail -F  /var/log/apps/app_l0serviceAgent_FoeLog.log |grep -o \{.*
+    dbiClient -s halserver-1-10 -c pal.1-4.getDeviceModel //cardtype will be output
+
+
+cd /home/bld_home/ssingh/z/chassisx-g30/src/external-repos/gx-integration-tests/scripts/subsystem/l0service/SlteTopo/
+python3 OneStepSlteTopoSetup.py --yaml_file L0ServiceSlteTopoCases.yml --test_file L0ServiceSlteNCTests.py
+
+                </pre>
             </section>
             <section class="command-card">
                 <div class="card-top">
@@ -451,16 +453,209 @@ shell dbiClient -s  /dbi/OlsAgt-1-5 -c foe.status</pre>
                     <h2>Block 18</h2>
                     <button class="copy-button" type="button" data-target="commands-18">Copy Block</button>
                 </div>
-                <pre id="commands-18">shell dbiClient -s  /dbi/OlsAgt-1-5 -c foe.slot delete 1-1
-shell dbiClient -s  /dbi/OlsAgt-1-5 -c foe.slot delete 1-2
-shell dbiClient -s  /dbi/OlsAgt-1-5 -c foe.slot delete 1
-shell dbiClient -s  /dbi/OlsAgt-1-5 -c foe.dump
-shell dbiClient -s  /dbi/OlsAgt-1-5 -c foe.status
+                <pre id="commands-18">
 shell dbiClient -s  /dbi/OlsAgt-1-5 -c foe.slot delete 1-1
 shell dbiClient -s  /dbi/OlsAgt-1-5 -c foe.slot delete 1-2
 shell dbiClient -s  /dbi/OlsAgt-1-5 -c foe.slot delete 1
 shell dbiClient -s  /dbi/OlsAgt-1-5 -c foe.dump
-shell dbiClient -s  /dbi/OlsAgt-1-5 -c foe.status</pre>
+shell dbiClient -s  /dbi/OlsAgt-1-5 -c foe.status
+
+dbiClient -s  /dbi/OlsAgt-1-5 -c foe.slot delete 1-1
+dbiClient -s  /dbi/OlsAgt-1-5 -c foe.slot delete 1-2
+dbiClient -s  /dbi/OlsAgt-1-5 -c foe.slot delete 1
+dbiClient -s  /dbi/OlsAgt-1-5 -c foe.dump
+dbiClient -s  /dbi/OlsAgt-1-5 -c foe.status
+
+dbiClient -s  /dbi/OlsAgt-1-5 -c foe.slot asdf asd fa sdfa sdf as fas f asdf as fs afd
+dbiClient -s  /dbi/OlsAgt-1-5 -c foe.slot 0-0
+dbiClient -s  /dbi/OlsAgt-1-5 -c foe.slot add 1-18
+dbiClient -s  /dbi/OlsAgt-1-5 -c foe.slot delete 1-18
+dbiClient -s  /dbi/OlsAgt-1-5 -c foe.slot add 1-18
+dbiClient -s  /dbi/OlsAgt-1-5 -c foe.slot add 1-17
+dbiClient -s  /dbi/OlsAgt-1-5 -c foe.slot add 18
+dbiClient -s  /dbi/OlsAgt-1-5 -c foe.slot add 1-18
+dbiClient -s  /dbi/OlsAgt-1-5 -c foe.slot add M
+dbiClient -s  /dbi/OlsAgt-1-5 -c foe.slot addd
+dbiClient -s  /dbi/OlsAgt-1-5 -c foe.slot ADDDDD M
+dbiClient -s  /dbi/OlsAgt-1-5 -c foe.slot Add
+dbiClient -s  /dbi/OlsAgt-1-5 -c foe.slot Add m
+dbiClient -s  /dbi/OlsAgt-1-5 -c foe.slot Add 1-20000000000000000000
+dbiClient -s  /dbi/OlsAgt-1-5 -c foe.slot Add 1-20000
+dbiClient -s  /dbi/OlsAgt-1-5 -c foe.slot Add 1-20000
+dbiClient -s  /dbi/OlsAgt-1-5 -c foe.slot deleee 1-0
+dbiClient -s  /dbi/OlsAgt-1-5 -c foe.slot delete 1-18
+dbiClient -s  /dbi/OlsAgt-1-5 -c foe.slot delete ba-28
+dbiClient -s  /dbi/OlsAgt-1-5 -c foe.slot delete SA-12
+dbiClient -s  /dbi/OlsAgt-1-5 -c foe.slot Delete pa-ba
+dbiClient -s  /dbi/OlsAgt-1-5 -c foe.slot Delete 1-2000
+dbiClient -s  /dbi/OlsAgt-1-5 -c foe.slot elete 12
+dbiClient -s  /dbi/OlsAgt-1-5 -c foe.slot delete 12
+dbiClient -s  /dbi/OlsAgt-1-5 -c foe.slot delete A-12
+dbiClient -s  /dbi/OlsAgt-1-5 -c foe.slot delete B-C
+dbiClient -s  /dbi/OlsAgt-1-5 -c foe.slot delete 1
+dbiClient -s  /dbi/OlsAgt-1-5 -c foe.slot delete 1-18
+dbiClient -s  /dbi/OlsAgt-1-5 -c foe.slot delete 1-17
+dbiClient -s  /dbi/OlsAgt-1-5 -c foe.slot delete 10
+dbiClient -s  /dbi/OlsAgt-1-5 -c foe.slot delete 20
+dbiClient -s  /dbi/OlsAgt-1-5 -c foe.dump
+dbiClient -s  /dbi/OlsAgt-1-5 -c foe.slot delete 1-1
+dbiClient -s  /dbi/OlsAgt-1-5 -c foe.slot delete 1-8
+dbiClient -s  /dbi/OlsAgt-1-5 -c foe.slot delete 1-17
+dbiClient -s  /dbi/OlsAgt-1-5 -c foe.slot delete 1-18
+dbiClient -s  /dbi/OlsAgt-1-5 -c foe.slot delete 1-20000
+dbiClient -s  /dbi/OlsAgt-1-5 -c foe.dump
+dbiClient -s  /dbi/OlsAgt-1-5 -c foe.add
+dbiClient -s  /dbi/OlsAgt-1-5 -c foe.slot add A=1
+dbiClient -s  /dbi/OlsAgt-1-5 -c foe.slot add A=B-C
+dbiClient -s  /dbi/OlsAgt-1-5 -c foe.slot add 1-1
+dbiClient -s  /dbi/OlsAgt-1-5 -c foe.dump mTestMode_Ingore_ActiveMarkers_Check
+dbiClient -s  /dbi/OlsAgt-1-5 -c foe.sync 1-Vb mux true
+dbiClient -s  /dbi/OlsAgt-1-5 -c foe.sync 1 mux true
+dbiClient -s  /dbi/OlsAgt-1-5 -c foe.sync VD-FE mux true
+dbiClient -s  /dbi/OlsAgt-1-5 -c foe.remove
+dbiClient -s  /dbi/OlsAgt-1-5 -c foe.remove 1-1
+dbiClient -s  /dbi/OlsAgt-1-5 -c foe.remove 1=B;
+dbiClient -s  /dbi/OlsAgt-1-5 -c foe.remove 1-1 mux
+dbiClient -s  /dbi/OlsAgt-1-5 -c foe.remove 1-P mux
+dbiClient -s  /dbi/OlsAgt-1-5 -c foe.remove 1_E mXXux nmc
+dbiClient -s  /dbi/OlsAgt-1-5 -c foe.remove 1-asdf mXuxXXX nmc=1
+dbiClient -s  /dbi/OlsAgt-1-5 -c foe.remove C-D mux nmc=1
+dbiClient -s  /dbi/OlsAgt-1-5 -c foe.remove 0-E mux nmc=1
+dbiClient -s  /dbi/OlsAgt-1-5 -c foe.remove @@@000000 mux nmc=1
+dbiClient -s  /dbi/OlsAgt-1-5 -c foe.remove 13333344444444444444455555500000000 mux nmc=1
+dbiClient -s  /dbi/OlsAgt-1-5 -c foe.remove 1-1 mux 2
+dbiClient -s  /dbi/OlsAgt-1-5 -c foe.remove 1-1 demux 3
+dbiClient -s  /dbi/OlsAgt-1-5 -c foe.remove 1-1 mux 100
+dbiClient -s  /dbi/OlsAgt-1-5 -c foe.remove 1 mux 1000
+dbiClient -s  /dbi/OlsAgt-1-5 -c foe.remove 1 mux K1000D
+dbiClient -s  /dbi/OlsAgt-1-5 -c foe.add
+dbiClient -s  /dbi/OlsAgt-1-5 -c foe.add 1-1
+dbiClient -s  /dbi/OlsAgt-1-5 -c foe.add 1-1 mux
+dbiClient -s  /dbi/OlsAgt-1-5 -c foe.add 1-1 mux nmc
+dbiClient -s  /dbi/OlsAgt-1-5 -c foe.add 1 mux nmc=1
+dbiClient -s  /dbi/OlsAgt-1-5 -c foe.add 100000000000 mux nmc=1
+dbiClient -s  /dbi/OlsAgt-1-5 -c foe.add 1000000000000000000 mux nmc=1
+dbiClient -s  /dbi/OlsAgt-1-5 -c foe.add 1000000000000000000000000000000000 mux nmc=1
+dbiClient -s  /dbi/OlsAgt-1-5 -c foe.add 1-100000000 mux nmc=1
+dbiClient -s  /dbi/OlsAgt-1-5 -c foe.add 1-10000 mux nmc=1
+dbiClient -s  /dbi/OlsAgt-1-5 -c foe.add 1-10000 mux nmc=1
+dbiClient -s  /dbi/OlsAgt-1-5 -c foe.add 1-10000 mux nmc=1
+dbiClient -s  /dbi/OlsAgt-1-5 -c foe.add 1-10000 mux nmc=1
+dbiClient -s  /dbi/OlsAgt-1-5 -c foe.add 1-1 mux nmc=1
+dbiClient -s  /dbi/OlsAgt-1-5 -c foe.dump
+dbiClient -s  /dbi/OlsAgt-1-5 -c foe.add F-1 mux nmc=1
+dbiClient -s  /dbi/OlsAgt-1-5 -c foe.add G mux nMc=1
+dbiClient -s  /dbi/OlsAgt-1-5 -c foe.add 1-1 mux nmc=1
+dbiClient -s  /dbi/OlsAgt-1-5 -c foe.add 1-1 mux nMc=1
+dbiClient -s  /dbi/OlsAgt-1-5 -c foe.add 1-1 mux nNMc=1
+dbiClient -s  /dbi/OlsAgt-1-5 -c foe.add 1-1 mux nNMc=MC
+dbiClient -s  /dbi/OlsAgt-1-5 -c foe.add 1-1 mux nNMc=Masdfasdf
+dbiClient -s  /dbi/OlsAgt-1-5 -c foe.add 1-1 mux nNMc=Masdfasdfasdfasdfasfd
+dbiClient -s  /dbi/OlsAgt-1-5 -c foe.add 1-1 mux nNMc=Masdfasdfasdfasdfasfdasdfasdfasdf
+dbiClient -s  /dbi/OlsAgt-1-5 -c foe.add 1-1 mux NMc=Masdfasdfasdfasdfasfdasdfasdfasdf
+dbiClient -s  /dbi/OlsAgt-1-5 -c foe.add 1-1 mux NMc=Masd
+dbiClient -s  /dbi/OlsAgt-1-5 -c foe.add 1-1 mux NMc=Ma
+dbiClient -s  /dbi/OlsAgt-1-5 -c foe.add 1-1 mux NMc=M
+dbiClient -s  /dbi/OlsAgt-1-5 -c foe.add 1-1 mux NMc=1
+dbiClient -s  /dbi/OlsAgt-1-5 -c foe.add 1-1 mux NMc=1 IMC
+dbiClient -s  /dbi/OlsAgt-1-5 -c foe.add 1-1 mux NMc=1 IMC=1
+dbiClient -s  /dbi/OlsAgt-1-5 -c foe.add 1-1 mux NMc=1 IMC=asdf
+dbiClient -s  /dbi/OlsAgt-1-5 -c foe.add 1-1 mux NMc=1 IMCC=asdf
+dbiClient -s  /dbi/OlsAgt-1-5 -c foe.add 1-1 mux NMc=1 IMC=asdf
+dbiClient -s  /dbi/OlsAgt-1-5 -c foe.add 1-1 mux NMc=1 IMC=1
+dbiClient -s  /dbi/OlsAgt-1-5 -c foe.add 1-1 mux NMc=1 IMC=1 ,a ,,,,
+dbiClient -s  /dbi/OlsAgt-1-5 -c foe.add 1-1 mux NMc=1 IMC=1 ,a ,,,, l l l l l l l l
+dbiClient -s  /dbi/OlsAgt-1-5 -c foe.add 1-1 mux NMc=1 IMC=1 ,a ,,,
+dbiClient -s  /dbi/OlsAgt-1-5 -c foe.add 1-1 mux NMc=1 IMC=1 iMC=3
+dbiClient -s  /dbi/OlsAgt-1-5 -c foe.add 1-1 mux NMc=1 IMC=1 iMC=3 IMC=4
+dbiClient -s  /dbi/OlsAgt-1-5 -c foe.add 1-1 mux NMc=11 IMC=1 iMC=3 IMC=4
+dbiClient -s  /dbi/OlsAgt-1-5 -c foe.dump
+dbiClient -s  /dbi/OlsAgt-1-5 -c foe.add 1-1 mux NMc=1 IMC=1 iMC=3 IMC=4
+dbiClient -s  /dbi/OlsAgt-1-5 -c foe.dump
+dbiClient -s  /dbi/OlsAgt-1-5 -c foe.sync
+dbiClient -s  /dbi/OlsAgt-1-5 -c foe.sync asdfasfa sfasfasf
+dbiClient -s  /dbi/OlsAgt-1-5 -c foe.sync asdfasfa sfasfasf  asfdasfda
+dbiClient -s  /dbi/OlsAgt-1-5 -c foe.sync
+dbiClient -s  /dbi/OlsAgt-1-5 -c foe.sync 1-122222l3l3llasdf
+dbiClient -s  /dbi/OlsAgt-1-5 -c foe.sync 1-122222l3l3llasdf asdf
+dbiClient -s  /dbi/OlsAgt-1-5 -c foe.sync 1-122222l3l3llasdf asdf mu tre
+dbiClient -s  /dbi/OlsAgt-1-5 -c foe.sync 1-12222asdfasdfasdf2l3l3llasdf asdf mu tre
+dbiClient -s  /dbi/OlsAgt-1-5 -c foe.sync 1-1asdfasdfasdf2l3l3llasdf asdf mu tre
+dbiClient -s  /dbi/OlsAgt-1-5 -c foe.sync 1-1asdfasdfasdf2l3l3llasdf muxasdf mu tre
+dbiClient -s  /dbi/OlsAgt-1-5 -c foe.sync 1-1asdfasdfasdf2l3l3llasdf mux mu tre
+dbiClient -s  /dbi/OlsAgt-1-5 -c foe.sync 1-1asdfasdfasdf2l3l3llasdf mux
+dbiClient -s  /dbi/OlsAgt-1-5 -c foe.sync 1-1 mux true
+dbiClient -s  /dbi/OlsAgt-1-5 -c foe.sync 1-1 mux TT
+dbiClient -s  /dbi/OlsAgt-1-5 -c foe.dump 
+dbiClient -s  /dbi/OlsAgt-1-5 -c foe.sync 1-1asdfasdfasdf2l3l3llasdf mux false
+dbiClient -s  /dbi/OlsAgt-1-5 -c foe.sync 1asdfasdfasdf2l3l3llasdf mux falseadfasf
+dbiClient -s  /dbi/OlsAgt-1-5 -c foe.sync 1asdfasdfasdf2l3l3llasdf mux fals
+dbiClient -s  /dbi/OlsAgt-1-5 -c foe.sync 1asdfasdfasdf2l3l3llasdf demux
+dbiClient -s  /dbi/OlsAgt-1-5 -c foe.sync 1asdfasdfasdf2l3l3llasdf demux  true
+dbiClient -s  /dbi/OlsAgt-1-5 -c foe.sync 1asdfasdfasdf2l3l3llasdf demux  false
+dbiClient -s  /dbi/OlsAgt-1-5 -c foe.sync 1asdfasdfasdf2l3l3llasdf demux  true
+dbiClient -s  /dbi/OlsAgt-1-5 -c foe.sync 1asdfasdfasdf2l3l3llasdf demux true
+dbiClient -s  /dbi/OlsAgt-1-5 -c foe.sync 1-1 demux False
+dbiClient -s  /dbi/OlsAgt-1-5 -c foe.sync 1-1 demux true
+dbiClient -s  /dbi/OlsAgt-1-5 -c foe.sync 1-1 mux true
+dbiClient -s  /dbi/OlsAgt-1-5 -c foe.add 1-1 mux NMc=11 IMC=1 iMC=3 IMC=4M
+dbiClient -s  /dbi/OlsAgt-1-5 -c foe.add 1-1 mux NMc=12
+dbiClient -s  /dbi/OlsAgt-1-5 -c foe.add 1-1 mux NMc=13
+dbiClient -s  /dbi/OlsAgt-1-5 -c foe.add 1-1 mux NMc=1i1 IMC=1e iMC=e3 IMC=4uuu
+dbiClient -s  /dbi/OlsAgt-1-5 -c foe.add 1-1 mux NMc=0 IMC=0 iMC=0 IMC=0
+dbiClient -s  /dbi/OlsAgt-1-5 -c foe.add 1-1 mux NMc=120 IMC=0 iMC=0 IMC=0
+dbiClient -s  /dbi/OlsAgt-1-5 -c foe.add 1-1 mux NMc=120 IMC=2200 iMC=0 IMC=0
+dbiClient -s  /dbi/OlsAgt-1-5 -c foe.gettimer ABC
+dbiClient -s  /dbi/OlsAgt-1-5 -c foe.gettimer ABC
+dbiClient -s  /dbi/OlsAgt-1-5 -c foe.gettimer ABC EFd d d d d d d d d d d  dd d d d d d d
+dbiClient -s  /dbi/OlsAgt-1-5 -c foe.timer 1-@ MUX AGGR=1 BATCH=3
+dbiClient -s  /dbi/OlsAgt-1-5 -c foe.timer P-1 MUX AGGR=1 BATCH=3
+dbiClient -s  /dbi/OlsAgt-1-5 -c foe.timer Q-1 MUX AGGR=1 BATCH=30
+dbiClient -s  /dbi/OlsAgt-1-5 -c foe.timer 1-1 MUX AAGGR=1 ABATCH=3
+dbiClient -s  /dbi/OlsAgt-1-5 -c foe.timer 1-1 MUX AGGRA=1 BATCHA=3
+dbiClient -s  /dbi/OlsAgt-1-5 -c foe.timer 1-R MUX AGmGRA=1 BATmCHA=3
+dbiClient -s  /dbi/OlsAgt-1-5 -c foe.timer 1-1 MUX AGGRA=IE BATCHA=IE
+dbiClient -s  /dbi/OlsAgt-1-5 -c foe.timer 1-1 deMUX AGGRA=##10 BATCHA=3###
+dbiClient -s  /dbi/OlsAgt-1-5 -c foe.timer 1-1 deMUX AGGRA=====1 BATCHA====3
+dbiClient -s  /dbi/OlsAgt-1-5 -c foe.timer 1-1 deMUX AGGRA=10 BATCHA=120
+dbiClient -s  /dbi/OlsAgt-1-5 -c foe.gettimer 1-P MUX
+dbiClient -s  /dbi/OlsAgt-1-5 -c foe.gettimer 1 DEMUX
+dbiClient -s  /dbi/OlsAgt-1-5 -c foe.gettimer AB1 MUX
+dbiClient -s  /dbi/OlsAgt-1-5 -c foe.gettimer 1CF DEMUX
+dbiClient -s  /dbi/OlsAgt-1-5 -c foe.gettimer 1 MUXX
+dbiClient -s  /dbi/OlsAgt-1-5 -c foe.gettimer 1 XDEMUX
+dbiClient -s  /dbi/OlsAgt-1-5 -c foe.gettimer ### ###
+dbiClient -s  /dbi/OlsAgt-1-5 -c foe.gettimer @@@@ @@@
+dbiClient -s  /dbi/OlsAgt-1-5 -c foe.gettimer 1-1 MUX
+
+dbiClient -s  /dbi/OlsAgt-1-5 -c foe.slot add 1-8
+dbiClient -s  /dbi/OlsAgt-1-5 -c olsAgt.dumpDataCache
+dbiClient -s  /dbi/OlsAgt-1-5 -c foe.sync 1-8 mux true
+dbiClient -s  /dbi/OlsAgt-1-5 -c foe.sync 1-8 demux true
+dbiClient -s  /dbi/OlsAgt-1-5 -c foe.add 1-8 mux nmc=17303878 imc=276862050N
+dbiClient -s  /dbi/OlsAgt-1-5 -c foe.add 1-8 mux nmc=17301506 imc=137715777572M
+dbiClient -s  /dbi/OlsAgt-1-5 -c foe.add 1-8 mux nmc=17301506 imc=68996300836 imc=137715777571 imc=137715777572 
+dbiClient -s  /dbi/OlsAgt-1-5 -c foe.add 1-8 demux nmc=17301506 imc=68996300820 imc=137715777555 imc=137715777556 
+dbiClient -s  /dbi/OlsAgt-1-5 -c foe.timer 1-8 MUX AGGR=5 BATCH=20
+dbiClient -s  /dbi/OlsAgt-1-5 -c foe.dump
+
+
+dbiClient -s  /dbi/OlsAgt-1-5 -c foe.sync 1-8 mux false
+dbiClient -s  /dbi/OlsAgt-1-5 -c foe.sync 1-8 demux false
+
+dbiClient -s  /dbi/OlsAgt-1-5 -c olsAgt.cvisolatehal halbatchreq 8 enable
+
+
+dbiClient -s  /dbi/OlsAgt-1-5 -c foe.slot add 1-1
+dbiClient -s  /dbi/OlsAgt-1-5 -c foe.sync 1-1 mux false
+dbiClient -s  /dbi/OlsAgt-1-5 -c foe.add 1-1 mux NMc=120 IMC=2200 iMC=1140 IMC=112120
+dbiClient -s  /dbi/OlsAgt-1-5 -c foe.add 1-1 mux NMc=121 IMC=2200 iMC=1140 IMC=112120
+dbiClient -s  /dbi/OlsAgt-1-5 -c foe.add 1-1 mux NMc=122 IMC=2200 iMC=1140 IMC=112120
+dbiClient -s  /dbi/OlsAgt-1-5 -c foe.add 1-1 mux NMc=123 IMC=2200 iMC=1140 IMC=112120
+dbiClient -s  /dbi/OlsAgt-1-5 -c foe.sync 1-1 mux true
+dbiClient -s  /dbi/OlsAgt-1-5 -c foe.dump
+dbiClient -s  /dbi/OlsAgt-1-5 -c foe.slot delete 1-1
+dbiClient -s  /dbi/OlsAgt-1-5 -c foe.dump</pre>
             </section>
             <section class="command-card">
                 <div class="card-top">
