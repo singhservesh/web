@@ -183,45 +183,21 @@ cd /home/bld_home/ssingh/z/chassisx-g30/etc/
                     <h2>OniConfig</h2>
                     <button class="copy-button" type="button" data-target="commands-2">Copy Block</button>
                 </div>
-                <pre id="commands-2">onNode 2.3.4.5 onApp bsim/1-8 Command plugInSfp ZXS-SPOSC1BK-Z0 SFP_SPOSC
-onNode 2.3.4.5 onApp bsim Command modifyLoopBack 1-8 true
-onNode 2.3.4.5 onApp bsim Command setSpanLoss 1-8 15
-onNode 2.3.4.5 onApp bsim/1-8 Command setPower port-1-8-adc1 2 192800000 200000
-onNode 2.3.4.5 onApp bsim/1-8 Command setPower port-1-8-ad1 2 192800000 200000
-onNode 2.3.4.5 onApp bsim/1-8 Command setPower port-1-8-ad2 2 193200000 200000
-ssh root@localhost -p 9500</pre>
+                <pre id="commands-2">cd /home/bld_home/ssingh/z/chassisx-g30/src/external-repos/dsim/</pre>
             </section>
             <section class="command-card">
                 <div class="card-top">
-                    <h2>Block 3</h2>
+                    <h2>Force Build</h2>
                     <button class="copy-button" type="button" data-target="commands-3">Copy Block</button>
                 </div>
-                <pre id="commands-3">shell dbiClient -s  /dbi/OlsAgt-1-5 -c foe.slot delete 1-1
-shell dbiClient -s  /dbi/OlsAgt-1-5 -c foe.slot delete 1-2
-shell dbiClient -s  /dbi/OlsAgt-1-5 -c foe.slot delete 1
-shell dbiClient -s  /dbi/OlsAgt-1-5 -c foe.dump
-shell dbiClient -s  /dbi/OlsAgt-1-5 -c foe.status
-shell dbiClient -s  /dbi/OlsAgt-1-5 -c foe.slot delete 1-1
-shell dbiClient -s  /dbi/OlsAgt-1-5 -c foe.slot delete 1-2
-shell dbiClient -s  /dbi/OlsAgt-1-5 -c foe.slot delete 1
-shell dbiClient -s  /dbi/OlsAgt-1-5 -c foe.dump
-shell dbiClient -s  /dbi/OlsAgt-1-5 -c foe.status</pre>
+                <pre id="commands-3">./logCbuild.sh -c -b sim -flat -g -pred -p g3x -f frcug3x -ctcdelta-branch master -ctcdelta-component device:l0service</pre>
             </section>
             <section class="command-card">
                 <div class="card-top">
-                    <h2>Block 4</h2>
+                    <h2>FRCU Build</h2>
                     <button class="copy-button" type="button" data-target="commands-4">Copy Block</button>
                 </div>
-                <pre id="commands-4">shell dbiClient -s  /dbi/OlsAgt-1-5 -c foe.slot delete 1-1
-shell dbiClient -s  /dbi/OlsAgt-1-5 -c foe.slot delete 1-2
-shell dbiClient -s  /dbi/OlsAgt-1-5 -c foe.slot delete 1
-shell dbiClient -s  /dbi/OlsAgt-1-5 -c foe.dump
-shell dbiClient -s  /dbi/OlsAgt-1-5 -c foe.status
-shell dbiClient -s  /dbi/OlsAgt-1-5 -c foe.slot delete 1-1
-shell dbiClient -s  /dbi/OlsAgt-1-5 -c foe.slot delete 1-2
-shell dbiClient -s  /dbi/OlsAgt-1-5 -c foe.slot delete 1
-shell dbiClient -s  /dbi/OlsAgt-1-5 -c foe.dump
-shell dbiClient -s  /dbi/OlsAgt-1-5 -c foe.status</pre>
+                <pre id="commands-4">./logCbuild.sh -b sim -flat -g -pred -p g3x -f frcug3x -ctcdelta-branch master -ctcdelta-component device:l0service</pre>
             </section>
             <section class="command-card">
                 <div class="card-top">

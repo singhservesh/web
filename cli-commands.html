@@ -195,8 +195,8 @@ add -m nmc-2-trib parent-facility 'oms-1-8-ad1' center-frequency '192800000' wid
 add -m nmc-2-trib parent-facility 'oms-1-8-ad2' center-frequency '193200000' width '200000'  input-power-min '-1.00' input-power-max '3.00'
 
 add -f oxcon-1 source 'nmc-1-trib' destination 'nmc-1-line'
-set oxcon-1 activation-request-fwd deactivate  activation-request-bwd deactivate
-operation-control oxcon-1 controlled-delete=disabled</pre>
+#set oxcon-1 activation-request-fwd deactivate  activation-request-bwd deactivate
+#operation-control disable controlled-delete oxcon-1</pre>
             </section>
             <section class="command-card">
                 <div class="card-top">
@@ -213,19 +213,14 @@ ssh root@localhost -p 9500</pre>
             </section>
             <section class="command-card">
                 <div class="card-top">
-                    <h2>Block 3</h2>
+                    <h2>Container-Create</h2>
                     <button class="copy-button" type="button" data-target="commands-3">Copy Block</button>
                 </div>
-                <pre id="commands-3">shell dbiClient -s  /dbi/OlsAgt-1-5 -c foe.slot delete 1-1
-shell dbiClient -s  /dbi/OlsAgt-1-5 -c foe.slot delete 1-2
-shell dbiClient -s  /dbi/OlsAgt-1-5 -c foe.slot delete 1
-shell dbiClient -s  /dbi/OlsAgt-1-5 -c foe.dump
-shell dbiClient -s  /dbi/OlsAgt-1-5 -c foe.status
-shell dbiClient -s  /dbi/OlsAgt-1-5 -c foe.slot delete 1-1
-shell dbiClient -s  /dbi/OlsAgt-1-5 -c foe.slot delete 1-2
-shell dbiClient -s  /dbi/OlsAgt-1-5 -c foe.slot delete 1
-shell dbiClient -s  /dbi/OlsAgt-1-5 -c foe.dump
-shell dbiClient -s  /dbi/OlsAgt-1-5 -c foe.status</pre>
+                <pre id="commands-3">
+cd /home/bld_home/ssingh/z/chassisx-g30/src/external-repos/dsim/
+./topologies/nebuilder.sh -t ZZ -i 1 -e A -o create -s  L0Service  -f 1:5:frcu32:active
+./scripts/dsim-shell.sh  SS01ZZA0105
+                </pre>
             </section>
             <section class="command-card">
                 <div class="card-top">
@@ -469,19 +464,16 @@ shell dbiClient -s  /dbi/OlsAgt-1-5 -c foe.status</pre>
             </section>
             <section class="command-card">
                 <div class="card-top">
-                    <h2>Block 19</h2>
+                    <h2>YouTube Title & Description</h2>
                     <button class="copy-button" type="button" data-target="commands-19">Copy Block</button>
                 </div>
-                <pre id="commands-19">shell dbiClient -s  /dbi/OlsAgt-1-5 -c foe.slot delete 1-1
-shell dbiClient -s  /dbi/OlsAgt-1-5 -c foe.slot delete 1-2
-shell dbiClient -s  /dbi/OlsAgt-1-5 -c foe.slot delete 1
-shell dbiClient -s  /dbi/OlsAgt-1-5 -c foe.dump
-shell dbiClient -s  /dbi/OlsAgt-1-5 -c foe.status
-shell dbiClient -s  /dbi/OlsAgt-1-5 -c foe.slot delete 1-1
-shell dbiClient -s  /dbi/OlsAgt-1-5 -c foe.slot delete 1-2
-shell dbiClient -s  /dbi/OlsAgt-1-5 -c foe.slot delete 1
-shell dbiClient -s  /dbi/OlsAgt-1-5 -c foe.dump
-shell dbiClient -s  /dbi/OlsAgt-1-5 -c foe.status</pre>
+                <pre id="commands-19">Create a catchy YouTube title and detailed description (with emojis) based on my situation.
+
+1. Title: max 100 characters (close to limit), include emojis, single copyable block
+2. Description: detailed, engaging, emoji-rich, max 4000 characters
+3. Add hashtags (lowercase only) at the end of description
+4. Description + hashtags in one copyable block
+5. Title and description must be in separate copyable blocks</pre>
             </section>
             <section class="command-card">
                 <div class="card-top">
