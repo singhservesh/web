@@ -196,7 +196,13 @@ add -m nmc-2-trib parent-facility 'oms-1-8-ad2' center-frequency '193200000' wid
 
 add -f oxcon-1 source 'nmc-1-trib' destination 'nmc-1-line'
 #set oxcon-1 activation-request-fwd deactivate  activation-request-bwd deactivate
-#operation-control disable controlled-delete oxcon-1</pre>
+#operation-control disable controlled-delete oxcon-1
+operation-control disable controlled-delete oxcon-1
+delete -f oxcon-1
+delete -f nmc
+delete -f mc
+delete card-1-8
+simulate plug-out-fru 1-8</pre>
             </section>
             <section class="command-card">
                 <div class="card-top">
