@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>TTD Bookmarklet Generator</title>
+<style>
+* { box-sizing: border-box; }
+
+body {
+    font-family: Arial, sans-serif;
+    max-width: 900px;
+    margin: 30px auto;
+    padding: 0 16px;
+    background: #f4f6fb;
+    color: #172033;
+}
+
+h1 { font-size: 26px; }
+
+.panel {
+    background: white;
+    padding: 20px;
+    margin: 18px 0;
+    border: 1px solid #d9deea;
+    border-radius: 12px;
+}
+
+label {
+    display: block;
+    font-weight: bold;
+    margin: 12px 0 6px;
+}
+
+input, textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #bac4d6;
+    border-radius: 7px;
+    font: inherit;
+}
+
+button {
+    padding: 11px 16px;
+    margin: 12px 8px 0 0;
+    border: 0;
+    border-radius: 7px;
+    background: #2459d3;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+button.secondary {
+    background: #e9eef9;
+    color: #183b86;
+}
+
+.person {
+    padding: 15px;
+    margin-top: 15px;
+    border: 1px solid #d9deea;
+    border-radius: 9px;
+}
+
+.person h3 { margin-top: 0; }
+
+textarea {
+    min-height: 180px;
+    font: 12px monospace;
+    overflow-wrap: anywhere;
+}
+
+#status {
+    margin-top: 12px;
+    color: #17643b;
+}
+
+.note {
+    padding: 12px;
+    background: #fff7e6;
+    border-left: 4px solid #d58a16;
+}
+
+@media (max-width: 600px) {
+    body { margin-top: 15px; }
+    .panel { padding: 14px; }
+}
+</style>
+</head>
+<body>
+
+<h1>TTD Bookmarklet Generator</h1>
+<p>Enter pilgrim details, generate the bookmarklet, and copy it into a Chrome bookmark.</p>
+
+<section class="panel">
+    <label for="personCount">Number of people (1–20)</label>
+    <input id="personCount" type="number" min="1" max="20" value="2">
+
+    <button type="button" id="setCount">Create Person Fields</button>
+
+    <div id="people"></div>
+</section>
+
+<section class="panel">
+    <h2>Important</h2>
+    <p class="note">
+        This page runs locally in your browser. Your details are embedded
+        in the generated bookmark code. Keep that bookmark private.
+        The bookmarklet does not select gender or submit the form.
+    </p>
+
+    <button type="button" id="generate">Generate Bookmark Code</button>
+    <button type="button" class="secondary" id="copy" disabled>
+        Copy to Clipboard
+    </button>
+
+    <div id="status" role="status" aria-live="polite"></div>
+</section>
+
+<section class="panel">
+    <h2>Generated Bookmark URL</h2>
+    <textarea id="output" spellcheck="false"
+        placeholder="Generated code will appear here..."></textarea>
+</section>
+
+<section class="panel">
+    <h2>How to install</h2>
+    <ol>
+        <li>Press Ctrl + Shift + O in Chrome.</li>
+        <li>Create a bookmark named TTD Fill Pilgrim Details.</li>
+        <li>Paste the generated code into its URL field.</li>
+        <li>Open the TTD pilgrim form and click the bookmark.</li>
+    </ol>
+</section>
+
+<script>
+(() => {
+    const peopleContainer = document.getElementById("people");
+    const countInput = document.getElementById("personCount");
+    const output = document.getElementById("output");
+    const copyButton = document.getElementById("copy");
+    const status = document.getElementById("status");
+
+    function createPersonFields() {
+        let count = parseInt(countInput.value, 10);
+
+        if (!Number.isFinite(count)) count = 1;
+        count = Math.max(1, Math.min(20, count));
+        countInput.value = count;
+
+        const previous = [
+            ...peopleContainer.querySelectorAll(".person")
+        ].map(card => ({
+            name: card.querySelector(".personName").value,
+            age: card.querySelector(".personAge").value,
+            idNumber: card.querySelector(".personId").value
+        }));
+
+        peopleContainer.replaceChildren();
+
+        for (let i = 0; i < count; i++) {
+            const person = previous[i] || {
+                name: `Test Pilgrim ${i + 1}`,
+                age: String(30 - Math.min(i, 20)),
+                idNumber: ""
+            };
+
+            const card = document.createElement("div");
+            card.className = "person";
+
+            card.innerHTML = `
+                <h3>Pilgrim ${i + 1}</h3>
+
+                <label>Name</label>
+                <input class="personName" type="text"
+                       maxlength="80" autocomplete="off">
+
+                <label>Age</label>
+                <input class="personAge" type="number"
+                       min="1" max="120">
+
+                <label>Photo ID Number</label>
+                <input class="personId" type="text"
+                       maxlength="12" inputmode="numeric"
+                       autocomplete="off" placeholder="12 digits">
+            `;
+
+            card.querySelector(".personName").value = person.name;
+            card.querySelector(".personAge").value = person.age;
+            card.querySelector(".personId").value = person.idNumber;
+
+            peopleContainer.appendChild(card);
+        }
+
+        status.textContent = "";
+    }
+
+    function readPeople() {
+        return [...peopleContainer.querySelectorAll(".person")]
+            .map((card, index) => {
+                const name = card.querySelector(".personName").value.trim();
+                const age = card.querySelector(".personAge").value.trim();
+                const idNumber = card.querySelector(".personId").value.trim();
+
+                if (!name) {
+                    throw Error(`Enter the name for pilgrim ${index + 1}.`);
+                }
+
+                if (!age || Number(age) < 1 || Number(age) > 120) {
+                    throw Error(`Enter a valid age for pilgrim ${index + 1}.`);
+                }
+
+                if (!/^\d{12}$/.test(idNumber)) {
+                    throw Error(
+                        `Enter a 12-digit ID number for pilgrim ${index + 1}.`
+                    );
+                }
+
+                return { name, age, idNumber };
+            });
+    }
+
+    function generateBookmarklet(people) {
+        const data = JSON.stringify(people);
+
+        const source = `(()=> {
+const people=${data};
+
+const type=(e,v)=>{
+    if(!e||e.disabled)return false;
+    if(e.value.trim()===v)return true;
+
+    e.focus();
+    e.click();
+    e.select();
+    document.execCommand("insertText",false,v);
+
+    return e.value.trim()===v;
+};
+
+const choose=(e,v)=>{
+    if(!e)return false;
+
+    if(e.value.trim().toLowerCase()===v.toLowerCase())
+        return true;
+
+    e.click();
+
+    const option=[
+        ...document.querySelectorAll(
+            "li.floatingDropdown_listItem__tU_5x"
+        )
+    ].find(x=>
+        x.innerText.trim().toLowerCase()===v.toLowerCase() &&
+        x.getBoundingClientRect().width>0 &&
+        x.getBoundingClientRect().height>0
+    );
+
+    if(!option)return false;
+
+    option.click();
+
+    return e.value.trim().toLowerCase()===v.toLowerCase();
+};
+
+for(let i=0;i<people.length;i++){
+    const p=people[i];
+    const id=String(i);
+
+    const name=document.querySelector(
+        'input[name="fname"][id="'+id+'"]'
+    );
+
+    const age=document.querySelector(
+        'input[name="age"][id="'+id+'"]'
+    );
+
+    const idType=document.querySelector(
+        'input[name="photoIdType"][id="'+id+'"]'
+    );
+
+    const idNumber=document.querySelector(
+        'input[name="idProofNumber"][id="'+id+'"]'
+    );
+
+    if(!name||!age||!idType||!idNumber)return;
+
+    if(!name.value.trim()&&!type(name,p.name))return;
+    if(!age.value.trim()&&!type(age,p.age))return;
+
+    if(!idType.value.trim()&&!choose(idType,"Aadhaar Card"))
+        return;
+
+    if(!idNumber.value.trim()){
+        if(idNumber.disabled)return;
+        if(!type(idNumber,p.idNumber))return;
+    }
+}
+})();`;
+
+        return "javascript:" + source.replace(/\s+/g, " ");
+    }
+
+    document.getElementById("setCount")
+        .addEventListener("click", createPersonFields);
+
+    document.getElementById("generate")
+        .addEventListener("click", () => {
+            try {
+                const people = readPeople();
+
+                output.value = generateBookmarklet(people);
+                copyButton.disabled = false;
+                status.textContent =
+                    "Bookmark code generated successfully.";
+            } catch (error) {
+                status.textContent = error.message;
+            }
+        });
+
+    copyButton.addEventListener("click", async () => {
+        if (!output.value) return;
+
+        try {
+            await navigator.clipboard.writeText(output.value);
+            status.textContent = "Copied to clipboard.";
+        } catch {
+            output.focus();
+            output.select();
+
+            const copied = document.execCommand("copy");
+
+            status.textContent = copied
+                ? "Copied to clipboard."
+                : "Copy failed. Select the code and press Ctrl+C.";
+        }
+    });
+
+    createPersonFields();
+})();
+</script>
+
+</body>
+</html>
